@@ -9,7 +9,7 @@ const requestUrl =
   api + `?token=${token}&emailaddress=${email}&entityname=${searchterm}`;
 console.log(requestUrl);
 axios
-  .get(requestUrl)
+  .get(requestUrl, { headers: { 'User-Agent': 'Chrome 104.0.0.0' } })
   .then(function (response) {
     console.log(response);
     //TODO fix this

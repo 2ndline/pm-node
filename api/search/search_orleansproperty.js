@@ -1,10 +1,13 @@
 // run `node index.js` in the terminal
-function search(params){
+function search_orleansproperty(params) {
   console.log('Starting Orleans property search- basic');
   const axios = require('axios');
   const address = '6334 Canal Blvd'; //TODO take in param
+  if (params != null && params.address != null) {
+    address = params.address;
+  }
   let addressSearch = encodeURIComponent(address);
-  
+
   //get address candidate
   axios
     .get(
@@ -34,8 +37,7 @@ function search(params){
     .catch((error) => {
       console.log(error);
     });
-  return;  
+  return;
 }
 
-module.exports(search);
-
+module.exports(search_orleansproperty);
