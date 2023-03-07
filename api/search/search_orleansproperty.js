@@ -2,7 +2,7 @@
 function search_orleansproperty(params) {
   console.log('Starting Orleans property search- basic');
   const axios = require('axios');
-  const address = '6334 Canal Blvd'; //TODO take in param
+  let address = '6334 Canal Blvd'; //TODO take in param
   if (params != null && params.address != null) {
     address = params.address;
   }
@@ -28,16 +28,20 @@ function search_orleansproperty(params) {
         )
         .then((response) => {
           console.log(response.data.results[0]);
+          return response.data.results[0];
           //TODO - store response, return document id
         })
         .catch((error) => {
           console.log(error);
+          return error;
         });
     })
     .catch((error) => {
       console.log(error);
+      return error;
     });
   return;
 }
-
-module.exports(search_orleansproperty);
+module.exports = {
+  search_orleansproperty,
+};

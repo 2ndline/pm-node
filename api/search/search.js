@@ -4,7 +4,9 @@ app.use(express.json());
 const orleansproperty = require('./search_orleansproperty');
 //READ Request Handlers
 app.get('/', (req, res) => {
-  res.send('Yo');
+  let address = '6334 Canal Blvd';
+  const result = orleansproperty.search_orleansproperty({ address: address });
+  res.send(result);
 });
 
 app.get('/search', (req, res) => {
