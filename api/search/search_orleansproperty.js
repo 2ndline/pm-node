@@ -1,5 +1,5 @@
 // run `node index.js` in the terminal
-function search_orleansproperty(params) {
+function search_orleansproperty(params, callback) {
   console.log('Starting Orleans property search- basic');
   const axios = require('axios');
   let address = '6334 Canal Blvd'; //TODO take in param
@@ -27,18 +27,19 @@ function search_orleansproperty(params) {
             '&geometryType=esriGeometryPoint&sr=102100&mapExtent=-10033557.233911136%2C3492641.7085679607%2C-9977681.766234746%2C3519853.290637447&layers=all%3A13%2C0%2C8%2C3%2C1%2C2%2C4%2C5%2C6%2C7'
         )
         .then((response) => {
-          console.log(response.data.results[0]);
-          return response.data.results[0];
+          var property = response.data.results[0];
+          console.log(property);
+          return callback(property);
           //TODO - store response, return document id
         })
         .catch((error) => {
           console.log(error);
-          return error;
+          return callback(error);
         });
     })
     .catch((error) => {
       console.log(error);
-      return error;
+      return callback(error);
     });
   return;
 }
