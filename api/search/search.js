@@ -19,6 +19,7 @@ app.get('/search', (req, res) => {
     return;
   }
 
+  //TODO for each search provider in the parameters, fire off respective service
   orleansproperty.search_orleansproperty(req.parameters, function (response) {
     res.send(response);
   });
