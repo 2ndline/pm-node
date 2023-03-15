@@ -19,15 +19,17 @@ app.get('/search', (req, res) => {
     return;
   }
 
-  //TODO for each search provider in the parameters, fire off respective service
-  orleansproperty.search_orleansproperty(req.parameters, function (response) {
-    res.send(response);
-  });
-});
+  //TODO do search against existing value
 
-//CREATE Request Handler
-app.post('/search/advanced', (req, res) => {
-  res.send('TODO');
+  if (
+    'orleansproperty' in req.parameters &&
+    req.parameters['orleansproperty'] !== undefined
+  ) {
+    orleansproperty.search_orleansproperty(req.parameters, function (response) {
+      res.send(response);
+    });
+  }
+  //TODO for each search provider in the parameters, fire off respective service
 });
 
 //PORT ENVIRONMENT VARIABLE
