@@ -20,12 +20,12 @@ app.get('/search', (req, res) => {
   }
 
   //TODO do search against existing value
-
   if (
     'orleansproperty' in req.parameters &&
     req.parameters['orleansproperty'] !== undefined
   ) {
     orleansproperty.search_orleansproperty(req.parameters, function (response) {
+      //TODO - add to search queue, return id
       res.send(response);
     });
   }
